@@ -1,0 +1,18 @@
+language: node_js
+node_js: 
+    - '11'
+install:
+  - npm install
+script:
+  - hexo g
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "zhukaohome"
+  - git config user.email "592837154@qq.com"
+  - git add -A
+  - git commit -m "Update documents"
+  - git push --force "https://${TOCKEN}@github.com/592837154/ts-hexo.git" "master:gh-pages"
+branches:
+  only:
+    - master
